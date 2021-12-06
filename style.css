@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Red+Hat+Display:wght@700&display=swap');
+
+:root{
+    --main-bg: hsl(222, 26%, 31%);
+    --toggle-bg: hsl(223, 31%, 20%);
+    --screen-bg: hsl(224, 36%, 15%);
+
+    --key-bg-blue:hsl(225, 21%, 49%);
+    --key-shdw-blue: hsl(224, 28%, 35%);
+
+    --key-bg-red: hsl(6, 63%, 50%);
+    --key-shdw-red: hsl(6, 70%, 34%);
+
+    --key-bg-orange: hsl(30, 25%, 89%);
+    --key-shdw-orange: hsl(28, 16%, 65%);
+
+    --dark-font: hsl(221, 14%, 31%);
+    --white:#fff;
+}
+
+*, *::after, *::before{
+    margin:0;
+    border:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body{
+    font-size: 32px;
+    font-family: 'Inter', sans-serif;
+    font-family: 'Red Hat Display', sans-serif;
+    background-color: var(--main-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color:var(--white);
+}
+
+.container {
+    width: 25rem;
+    height:30rem;
+    background-color: var(--main-bg);
+}
+
+.logo {
+    font-size: 1.5rem;
+    padding:0.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.theme{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template:
+        "x x"
+        "y z";
+    grid-column-gap: 0.2rem;
+}
+
+.theme > p {
+    height:1rem;
+    width:3rem;
+    grid-area: x;
+    text-align: right;
+    width:100%;
+    letter-spacing: 0.25rem;
+}
+
+.theme > label, .theme > p {
+    font-size: .7rem;
+}
+
+.theme > label {
+    grid-area: y;
+}
+
+.theme > input {
+    height:1rem;
+    width:3rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline:none;
+    background: var(--toggle-bg);
+    border-radius:1rem;
+    padding:0.2rem;
+    grid-area:z;
+    cursor: pointer;
+}
+
+.theme > input::-webkit-slider-runnable-track{
+    background: var(--toggle-bg);
+    border-radius:1rem;
+}
+
+.theme > input::-webkit-slider-thumb{
+    height:0.6rem;
+    width: 0.6rem;
+    background-color: var(--key-bg-red);
+
+}
+
+.theme > input::-moz-range-thumb{
+    height:0.7rem;
+    width: 0.7rem;
+    border-radius:50%;
+    background: var(--key-bg-red);
+    border:none;
+}
+
+#screen {
+    background: var(--screen-bg);
+    text-align: right;
+    width:100%;
+    padding:1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    height:4.5rem;
+}
+
+.keypad {
+    background:var(--toggle-bg);
+    width: 100%;
+    height:21.3rem;
+    border-radius: 0.5rem;
+    padding:1.5rem;
+    display: grid; 
+    grid-auto-rows: 1fr; 
+    grid-template-columns: 1fr 1fr 1fr 1fr; 
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template:
+        "a b c DEL"
+        "d e f add"
+        "g h i minus"
+        "dot j slash x"
+        "reset reset equals equals";
+    grid-gap: 1rem;
+}
+
+.key{
+    width:4.7rem;
+    font-size: 1.2rem;
+    border-radius:0.5rem;
+    background:var(--key-bg-orange);
+    box-shadow: 0 0.23em var(--key-shdw-orange);
+    color:var(--dark-font);
+    font-weight: bolder;
+    cursor: pointer;
+    text-align: center;
+    line-height:2.5rem;
+}
+
+#reset{
+    grid-area: reset;
+    width:10.5rem;
+}
+
+#reset, #del{
+    background:var(--key-bg-blue);
+    box-shadow:0 0.23rem var(--key-shdw-blue);
+    color: var(--white);
+}
+
+#equals {
+    grid-area: equals;
+    width:10.5rem;
+    background:var(--key-bg-red);
+    box-shadow:0 0.23rem var(--key-shdw-red);
+    color: var(--white);
+}
+
+@media (max-width:375px) {
+    .container{
+        width:90vw;
+    }
+
+    .keypad {
+        padding:1rem;
+        width:100%;
+        grid-gap:1rem;
+        grid-template-columns: 4rem 4rem 4rem 4rem; 
+        grid-template-rows: 3rem 3rem 3rem 3rem 3rem;    
+    }
+
+    .key {
+        width:4rem;
+    }
+
+    #reset, #equals {
+        width:9rem;
+    }
+}
